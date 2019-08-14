@@ -7,7 +7,7 @@
 
 struct Repository {
     let name: String
-    let url: String
+    let htmlUrl: String
     let forks: Int
 }
 

@@ -14,7 +14,7 @@ struct SearchTableViewCellItem {
     let forks: Int
 
     init?(repository: Repository) {
-        guard let url = URL(string: repository.url) else {
+        guard let url = URL(string: repository.htmlUrl) else {
             return nil
         }
         self.url = url

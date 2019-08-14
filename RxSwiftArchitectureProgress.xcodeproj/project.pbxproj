@@ -198,9 +198,7 @@
 		782EDCF522CA24B700EE7D5C /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				782EDCC922CA1A2900EE7D5C /* SearchViewController.swift */,
-				782EDCF722CA24D700EE7D5C /* SearchViewModel.swift */,
-				782EDCFB22CA262300EE7D5C /* SearchViewModelImpl.swift */,
+				7836FE2322F8C72800BACF34 /* ViewModel+functions */,
 				782EDD0122CA2D6D00EE7D5C /* Cell */,
 			);
 			path = Search;
@@ -232,6 +230,16 @@
 				785E656D22CA544E00C2EF7D /* ObservableType+doNext.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		7836FE2322F8C72800BACF34 /* ViewModel+functions */ = {
+			isa = PBXGroup;
+			children = (
+				782EDCC922CA1A2900EE7D5C /* SearchViewController.swift */,
+				782EDCF722CA24D700EE7D5C /* SearchViewModel.swift */,
+				782EDCFB22CA262300EE7D5C /* SearchViewModelImpl.swift */,
+			);
+			path = "ViewModel+functions";
 			sourceTree = "<group>";
 		};
 		DD48610B394409F14155FF2B /* Pods */ = {
