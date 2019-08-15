@@ -1,8 +1,8 @@
 //
-//  SearchViewController.swift
+//  Input as subjects.swift
 //  RxSwiftArchitectureProgress
 //
-//  Created by Anton Nazarov on 01/07/2019.
+//  Created by Anton Nazarov on 8/15/19.
 //  Copyright © 2019 Anton Nazarov. All rights reserved.
 //
 
@@ -11,9 +11,9 @@ import protocol Reusable.StoryboardBased
 import RxSwift
 import UIKit
 
-final class SearchViewController: UIViewController, StoryboardBased {
+final class SearchViewController2: UIViewController, StoryboardBased {
     // swiftlint:disable:next implicitly_unwrapped_optional
-    var viewModel: SearchViewModel!
+    var viewModel: SearchViewModel2!
     private let disposeBag = DisposeBag()
     private let searchController = UISearchController(searchResultsController: nil).then {
         $0.dimsBackgroundDuringPresentation = false
@@ -40,7 +40,7 @@ final class SearchViewController: UIViewController, StoryboardBased {
 }
 
 // MARK: - Bind
-private extension SearchViewController {
+private extension SearchViewController2 {
     func bindInput() {
         // swiftlint:disable:next trailing_closure
         let dataSource = RxTableViewSectionedReloadDataSource<SearchViewModel.SectionType>(
@@ -55,14 +55,8 @@ private extension SearchViewController {
     }
 
     func bindOutput() {
-        searchController.searchBar.rx.text.orEmpty
-            .skip(1)
-            .filter { !$0.isEmpty }
-            .distinctUntilChanged()
-            .debounce(.seconds(1), scheduler: MainScheduler.instance)
-            .bind(onNext: viewModel.search)
-            .disposed(by: disposeBag)
-        tableView.rx.reachedBottom(offset: 100.0).bind(onNext: viewModel.reachedBottom).disposed(by: disposeBag)
-        tableView.rx.modelSelected(SearchTableViewCellItem.self).bind(onNext: viewModel.selectItem).disposed(by: disposeBag)
+        searchController.searchBar.rx.text.orEmpty.bind(to: viewModel.search).disposed(by: disposeBag)
+        tableView.rx.reachedBottom(offset: 100.0).bind(to: viewModel.reachedBottom).disposed(by: disposeBag)
+        tableView.rx.modelSelected(SearchTableViewCellItem.self).bind(to: viewModel.selectItem).disposed(by: disposeBag)
     }
 }
