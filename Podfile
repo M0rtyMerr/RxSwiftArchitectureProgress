@@ -15,6 +15,7 @@ target 'RxSwiftArchitectureProgress' do
     inherit! :search_paths
     pod 'Quick'
     pod 'Nimble'
+    pod 'RxTest'
   end
 end
 

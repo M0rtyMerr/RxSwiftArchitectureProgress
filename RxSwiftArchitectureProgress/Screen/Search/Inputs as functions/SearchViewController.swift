@@ -12,7 +12,8 @@ import RxSwift
 import UIKit
 
 final class SearchViewController: UIViewController, StoryboardBased {
-    private let viewModel = Dependencies.searchViewModel
+    // swiftlint:disable:next implicitly_unwrapped_optional
+    var viewModel: SearchViewModel!
     private let disposeBag = DisposeBag()
     private let searchController = UISearchController(searchResultsController: nil).then {
         $0.dimsBackgroundDuringPresentation = false

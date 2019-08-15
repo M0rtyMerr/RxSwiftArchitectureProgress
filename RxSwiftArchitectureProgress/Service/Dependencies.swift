@@ -15,6 +15,6 @@ enum Dependencies {
         $0.keyDecodingStrategy = .convertFromSnakeCase
     }
     static let backgroundScheduler = SerialDispatchQueueScheduler(qos: .userInitiated)
-    static let githubService = SearchServiceImpl(jsonDecoder: jsonDecoder, scheduler: Dependencies.backgroundScheduler)
-    static let searchViewModel: SearchViewModel = SearchViewModelImpl(githubService: githubService)
+    static let githubService = SearchServiceImpl(jsonDecoder: jsonDecoder, backgroundScheduler: Dependencies.backgroundScheduler)
+    static let searchViewModel = SearchViewModelImpl(searchService: githubService)
 }

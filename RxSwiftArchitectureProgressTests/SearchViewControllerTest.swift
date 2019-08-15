@@ -10,6 +10,7 @@ import Nimble
 import Quick
 import RxSwift
 @testable import RxSwiftArchitectureProgress
+import RxTest
 
 final class SearchViewControllerTest: QuickSpec {
     override func spec() {
@@ -19,7 +20,10 @@ final class SearchViewControllerTest: QuickSpec {
             it("should release RxSwift.Resources after deinit") {
                 let expectedTotal = Resources.total
                 autoreleasepool {
-                    let sut = SearchViewController.instantiate()
+                    let sut = SearchViewController.instantiate().then {
+                        let searchService = SearchServiceImpl(jsonDecoder: JSONDecoder(), backgroundScheduler: MainScheduler.instance)
+                        $0.viewModel = SearchViewModelImpl(searchService: searchService)
+                    }
                     _ = sut.view
                 }
                 expect(Resources.total).toEventually(equal(expectedTotal))

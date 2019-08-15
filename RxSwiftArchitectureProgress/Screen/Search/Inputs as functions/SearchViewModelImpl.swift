@@ -18,8 +18,8 @@ final class SearchViewModelImpl {
     private let githubService: SearchService
     private var searchRequest = Request(query: "", page: .first)
 
-    init(githubService: SearchService) {
-        self.githubService = githubService
+    init(searchService: SearchService) {
+        self.githubService = searchService
     }
 }
 

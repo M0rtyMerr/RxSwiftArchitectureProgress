@@ -25,6 +25,8 @@ PODS:
   - RxSwiftExt/RxCocoa (5.0.0):
     - RxCocoa (~> 5.0)
     - RxSwiftExt/Core
+  - RxTest (5.0.0):
+    - RxSwift (~> 5)
   - SwiftLint (0.33.0)
   - Then (2.4.0)
 
@@ -36,6 +38,7 @@ DEPENDENCIES:
   - RxDataSources
   - RxSwift
   - RxSwiftExt
+  - RxTest
   - SwiftLint
   - Then
 
@@ -50,6 +53,7 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - RxSwiftExt
+    - RxTest
     - SwiftLint
     - Then
 
@@ -63,9 +67,10 @@ SPEC CHECKSUMS:
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
   RxSwiftExt: 4564187392cc53823ef241fa4a11647861567026
+  RxTest: 4349afe98f564e0a9bc19063368904622d17d49a
   SwiftLint: fed9c66336e41fc74dc48a73678380718f0c8b0e
   Then: 71866660c7af35a7343831f7668e7cd2b62ee0f2
 
-PODFILE CHECKSUM: efe04dd32287612aad4ce0c875a0ba9cee239881
+PODFILE CHECKSUM: 483297460c3f65bb013cc73e8337c1288bd4def1
 
 COCOAPODS: 1.7.5

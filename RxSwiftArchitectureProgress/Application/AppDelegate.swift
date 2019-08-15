@@ -8,14 +8,16 @@
 
 import UIKit
 
-@UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow? = UIWindow()
 
     // swiftlint:disable:next discouraged_optional_collection
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         window?.makeKeyAndVisible()
-        window?.rootViewController = UINavigationController(rootViewController: SearchViewController.instantiate())
+        let searchViewController = SearchViewController.instantiate().then {
+            $0.viewModel = Dependencies.searchViewModel
+        }
+        window?.rootViewController = UINavigationController(rootViewController: searchViewController)
         return true
     }
 }

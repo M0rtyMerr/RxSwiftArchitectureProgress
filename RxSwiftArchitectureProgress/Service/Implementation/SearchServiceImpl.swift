@@ -13,17 +13,17 @@ import RxCocoa
 
 final class SearchServiceImpl: SearchService {
     private let jsonDecoder: JSONDecoder
-    private let scheduler: SchedulerType
+    private let backgroundScheduler: SchedulerType
 
-    init(jsonDecoder: JSONDecoder, scheduler: SchedulerType) {
+    init(jsonDecoder: JSONDecoder, backgroundScheduler: SchedulerType) {
         self.jsonDecoder = jsonDecoder
-        self.scheduler = scheduler
+        self.backgroundScheduler = backgroundScheduler
     }
 
     func search(request: Request) -> Single<[Repository]> {
         return URLSession.shared.rx
             .data(request: URLRequest(url: request.url))
-            .observeOn(scheduler)
+            .subscribeOn(backgroundScheduler)
             .map { [jsonDecoder] in try jsonDecoder.decode(Response<Repository>.self, from: $0) }
             .map { $0.items }
             .asSingle()
