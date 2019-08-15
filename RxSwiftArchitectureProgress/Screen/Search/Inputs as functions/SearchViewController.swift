@@ -7,10 +7,11 @@
 //
 
 import class RxDataSources.RxTableViewSectionedReloadDataSource
+import Reusable
 import RxSwift
 import UIKit
 
-final class SearchViewController: UIViewController {
+final class SearchViewController: UIViewController, StoryboardBased {
     private let viewModel = Dependencies.searchViewModel
     private let disposeBag = DisposeBag()
     private let searchController = UISearchController(searchResultsController: nil).then {
@@ -55,21 +56,12 @@ private extension SearchViewController {
     func bindOutput() {
         searchController.searchBar.rx.text.orEmpty
             .skip(1)
+            .filter { !$0.isEmpty }
             .distinctUntilChanged()
             .debounce(.seconds(1), scheduler: MainScheduler.instance)
-            .bind { [viewModel] in
-                viewModel.search(query: $0)
-            }
+            .bind(onNext: viewModel.search)
             .disposed(by: disposeBag)
-        tableView.rx.reachedBottom(offset: 100.0)
-            .bind { [viewModel] in
-                viewModel.reachedBottom()
-            }
-            .disposed(by: disposeBag)
-        tableView.rx.modelSelected(SearchTableViewCellItem.self)
-            .bind { [viewModel] in
-                viewModel.selectItem($0)
-            }
-            .disposed(by: disposeBag)
+        tableView.rx.reachedBottom(offset: 100.0).bind(onNext: viewModel.reachedBottom).disposed(by: disposeBag)
+        tableView.rx.modelSelected(SearchTableViewCellItem.self).bind(onNext: viewModel.selectItem).disposed(by: disposeBag)
     }
 }

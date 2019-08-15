@@ -1,5 +1,7 @@
 PODS:
   - Differentiator (4.0.1)
+  - Nimble (8.0.2)
+  - Quick (2.1.0)
   - Reusable (4.1.0):
     - Reusable/Storyboard (= 4.1.0)
     - Reusable/View (= 4.1.0)
@@ -27,6 +29,8 @@ PODS:
   - Then (2.4.0)
 
 DEPENDENCIES:
+  - Nimble
+  - Quick
   - Reusable
   - RxCocoa
   - RxDataSources
@@ -38,6 +42,8 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Differentiator
+    - Nimble
+    - Quick
     - Reusable
     - RxCocoa
     - RxDataSources
@@ -49,6 +55,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  Nimble: 622629381bda1dd5678162f21f1368cec7cbba60
+  Quick: 4be43f6634acfa727dd106bdf3929ce125ffa79d
   Reusable: 82be188f29d96dc5eff0db7b2393bcc08d2cdd5b
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
@@ -58,6 +66,6 @@ SPEC CHECKSUMS:
   SwiftLint: fed9c66336e41fc74dc48a73678380718f0c8b0e
   Then: 71866660c7af35a7343831f7668e7cd2b62ee0f2
 
-PODFILE CHECKSUM: 053d47b41e4096df69d229872bf5561e7f89a67c
+PODFILE CHECKSUM: efe04dd32287612aad4ce0c875a0ba9cee239881
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.7.5

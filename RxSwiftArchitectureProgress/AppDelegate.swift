@@ -9,6 +9,13 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-    var window: UIWindow?
+final class AppDelegate: UIResponder, UIApplicationDelegate {
+    var window: UIWindow? = UIWindow()
+
+    // swiftlint:disable:next discouraged_optional_collection
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+        window?.makeKeyAndVisible()
+        window?.rootViewController = UINavigationController(rootViewController: SearchViewController.instantiate())
+        return true
+    }
 }
