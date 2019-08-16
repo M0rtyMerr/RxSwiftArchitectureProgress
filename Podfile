@@ -7,6 +7,7 @@ target 'RxSwiftArchitectureProgress' do
   pod 'RxCocoa'
   pod 'RxSwiftExt'
   pod 'RxDataSources'
+  pod 'ReactorKit'
   pod 'Reusable'
   pod 'Then'
   pod 'SwiftLint'

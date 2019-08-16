@@ -16,7 +16,7 @@ struct Page {
 
 extension Page {
     static var first: Page {
-        return Page(page: 0)
+        return Page(page: 1)
     }
 
     var next: Page {

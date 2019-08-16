@@ -28,3 +28,7 @@ extension SearchTableViewCellItem {
         return "\(forks)"
     }
 }
+
+// MARK: - Equatable
+extension SearchTableViewCellItem: Equatable {
+}

@@ -19,4 +19,5 @@ enum Dependencies {
     static let searchViewModel = SearchViewModelImpl(searchService: githubService)
     static let searchViewModel2 = SearchViewModel2Impl(searchService: githubService)
     static let searchViewModel3 = SearchViewModel3Impl(searchService: githubService)
+    static let searchViewModel4 = SearchViewModel4(searchService: githubService)
 }

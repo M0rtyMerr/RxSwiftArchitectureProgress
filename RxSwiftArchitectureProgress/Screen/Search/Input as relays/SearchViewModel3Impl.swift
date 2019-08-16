@@ -52,20 +52,18 @@ private extension SearchViewModel3Impl {
             .filter { !$0.isEmpty }
             .distinctUntilChanged()
             .debounce(.seconds(1), scheduler: MainScheduler.instance)
-            .withLatestFrom(searchRequest) { query, _ in
-                Request(query: query, page: .first)  // Map each new search query to new request with first page
-            }
-        newSearchRequests.mapTo([]).bind(to: repositories).disposed(by: disposeBag) // Clear current dataSource
+            .withLatestFrom(searchRequest) { query, _ in Request(query: query, page: .first) } // map each new search query to new request with first page
+        newSearchRequests.mapTo([]).bind(to: repositories).disposed(by: disposeBag) // clear current dataSource
         let allSearchRequests = Observable.merge(
             newSearchRequests,
-            reachedBottom.withLatestFrom(searchRequest) { $1.nextPage } // map each reachedBottom event to new request with similar search query and next page
+            reachedBottom.withLatestFrom(searchRequest) { $1.nextPage }.share() // map reachedBottom events to new request with similar query and next page
         )
         allSearchRequests.bind(to: searchRequest).disposed(by: disposeBag) // save current request
         allSearchRequests.mapTo(true).bind(to: isLoadingRelay).disposed(by: disposeBag) // enable loading indicator before request
         let searchEvents = allSearchRequests.flatMapLatest { [githubService] in
             githubService.search(request: $0).asObservable().materialize()
         }
-            .share()
+        .share()
         searchEvents.mapTo(false).bind(to: isLoadingRelay).disposed(by: disposeBag) // disabling loading indicator after request
         searchEvents.elements().withLatestFrom(repositories) { $1 + $0 }.bind(to: repositories).disposed(by: disposeBag)
         searchEvents.errors().bind { print($0) }.disposed(by: disposeBag)

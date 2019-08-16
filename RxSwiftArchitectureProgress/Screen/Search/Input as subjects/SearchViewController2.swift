@@ -56,7 +56,7 @@ private extension SearchViewController2 {
 
     func bindOutput() {
         searchController.searchBar.rx.text.orEmpty.bind(to: viewModel.search).disposed(by: disposeBag)
-        tableView.rx.reachedBottom(offset: 100.0).bind(to: viewModel.reachedBottom).disposed(by: disposeBag)
+        tableView.rx.reachedBottom(offset: 100.0).debug("PENIS").bind(to: viewModel.reachedBottom).disposed(by: disposeBag)
         tableView.rx.modelSelected(SearchTableViewCellItem.self).bind(to: viewModel.selectItem).disposed(by: disposeBag)
     }
 }

@@ -20,7 +20,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         $0.makeKeyAndVisible()
     }
     /// Switch demo type
-    private let demoType: DemoType = .inputAsRelay
+    private let demoType: DemoType = .inputAsSubject
 
     // swiftlint:disable:next discouraged_optional_collection
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
@@ -41,7 +41,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             window?.rootViewController = UINavigationController(rootViewController: searchViewController)
         case .udf:
-            break
+            let searchViewController = SearchViewController4.instantiate().then {
+                $0.reactor = Dependencies.searchViewModel4
+            }
+            window?.rootViewController = UINavigationController(rootViewController: searchViewController)
         }
         return true
     }
