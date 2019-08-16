@@ -1,0 +1,1 @@
+### This repo contains code samples for my ["Simplifying reactive code with MVI"](вставить ссыль) article. Check it out for better understanding
