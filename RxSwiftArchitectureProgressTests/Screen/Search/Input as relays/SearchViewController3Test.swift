@@ -16,7 +16,7 @@ final class SearchViewController3Test: QuickSpec {
     override func spec() {
         super.spec()
 
-        describe("searchViewController memory leaks test") {
+        describe("searchViewController3 memory leaks test") {
             it("should release RxSwift.Resources after deinit") {
                 let expectedTotal = Resources.total
                 autoreleasepool {

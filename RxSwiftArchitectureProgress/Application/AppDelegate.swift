@@ -10,7 +10,7 @@ import UIKit
 
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     private enum DemoType {
-        case inputAsFunc
+        case inputAsFunction
         case inputAsSubject
         case inputAsRelay
         case udf
@@ -20,12 +20,12 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         $0.makeKeyAndVisible()
     }
     /// Switch demo type
-    private let demoType: DemoType = .inputAsSubject
+    private let demoType: DemoType = .inputAsFunction
 
     // swiftlint:disable:next discouraged_optional_collection
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         switch demoType {
-        case .inputAsFunc:
+        case .inputAsFunction:
             let searchViewController = SearchViewController.instantiate().then {
                 $0.viewModel = Dependencies.searchViewModel
             }
