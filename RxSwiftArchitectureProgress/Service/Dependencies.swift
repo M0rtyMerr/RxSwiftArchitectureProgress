@@ -17,4 +17,6 @@ enum Dependencies {
     static let backgroundScheduler = SerialDispatchQueueScheduler(qos: .userInitiated)
     static let githubService = SearchServiceImpl(jsonDecoder: jsonDecoder, backgroundScheduler: Dependencies.backgroundScheduler)
     static let searchViewModel = SearchViewModelImpl(searchService: githubService)
+    static let searchViewModel2 = SearchViewModel2Impl(searchService: githubService)
+    static let searchViewModel3 = SearchViewModel3Impl(searchService: githubService)
 }

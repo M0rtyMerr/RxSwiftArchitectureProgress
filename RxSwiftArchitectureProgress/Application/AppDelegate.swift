@@ -9,15 +9,40 @@
 import UIKit
 
 final class AppDelegate: UIResponder, UIApplicationDelegate {
-    var window: UIWindow? = UIWindow()
+    private enum DemoType {
+        case inputAsFunc
+        case inputAsSubject
+        case inputAsRelay
+        case udf
+    }
+
+    var window: UIWindow? = UIWindow().then {
+        $0.makeKeyAndVisible()
+    }
+    /// Switch demo type
+    private let demoType: DemoType = .inputAsRelay
 
     // swiftlint:disable:next discouraged_optional_collection
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-        window?.makeKeyAndVisible()
-        let searchViewController = SearchViewController.instantiate().then {
-            $0.viewModel = Dependencies.searchViewModel
+        switch demoType {
+        case .inputAsFunc:
+            let searchViewController = SearchViewController.instantiate().then {
+                $0.viewModel = Dependencies.searchViewModel
+            }
+            window?.rootViewController = UINavigationController(rootViewController: searchViewController)
+        case .inputAsSubject:
+            let searchViewController = SearchViewController2.instantiate().then {
+                $0.viewModel = Dependencies.searchViewModel2
+            }
+            window?.rootViewController = UINavigationController(rootViewController: searchViewController)
+        case .inputAsRelay:
+            let searchViewController = SearchViewController3.instantiate().then {
+                $0.viewModel = Dependencies.searchViewModel3
+            }
+            window?.rootViewController = UINavigationController(rootViewController: searchViewController)
+        case .udf:
+            break
         }
-        window?.rootViewController = UINavigationController(rootViewController: searchViewController)
         return true
     }
 }
