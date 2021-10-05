@@ -46,7 +46,7 @@ DEPENDENCIES:
   - Then
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Differentiator
     - Nimble
     - Quick
@@ -78,4 +78,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 9fe4ac082145ac4cd7b783c78104bf23d9b6b5bd
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.10.1
